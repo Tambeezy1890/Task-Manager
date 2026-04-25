@@ -1,7 +1,6 @@
-
-const errorMiddleWare = (err,req,res,next)=>{
-    console.error(err.errors);
-    if (err.name === "ValidationError") {
+const errorMiddleWare = (err, req, res, next) => {
+  console.error(err.errors);
+  if (err.name === "ValidationError") {
     const errors = Object.values(err.errors).map((e) => e.message);
 
     return res.status(400).json({
@@ -27,6 +26,6 @@ const errorMiddleWare = (err,req,res,next)=>{
     type: "ServerError",
     message: err.message || "Internal server error",
   });
-}
+};
 
-export default errorMiddleWare
+export default errorMiddleWare;
